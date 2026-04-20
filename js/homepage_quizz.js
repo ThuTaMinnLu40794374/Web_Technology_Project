@@ -4,7 +4,7 @@ const quizzes = {
 
     island: {
         name: "Island of Decay",
-        image: "../img/quiz1.png",
+        image: "./img/quiz1.png",
         questions: [
             {
                 question: "💀 The undead are at your door. How do you react?",
@@ -70,7 +70,7 @@ const quizzes = {
 
     cursed: {
         name: "Cursed Wanderer",
-        image: "../img/quiz2.png",
+        image: "./img/quiz2.png",
         questions: [
             {
                 question: "🗡️ A cursed knight blocks your path. What do you do?",
@@ -136,7 +136,7 @@ const quizzes = {
 
     grave: {
         name: "Grave Hunt",
-        image: "../img/quiz3.png",
+        image: "./img/quiz3.png",
         questions: [
             {
                 question: "🕸️ Graves open around you. What’s your move?",
