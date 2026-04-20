@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Story Maze</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/gamepage.css">
+    <script src="../js/gamepage.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/swiperbundle.css" />
+    <link rel="stylesheet" href="../css/user.css">
+</head>
+
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="../sounds/navbar-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <header class="navbar">
+        <div class="logo">StoryMaze</div>
+
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html">Quizzes</a></li>
+            <li><a href="#">Games</a></li>
+            <li><a href="aboutuspage.html">About Us</a></li>
+            <li><a href="contactpage.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+            <label class="sound-switch">
+                <span class="sound-text">Music</span>
+                <input type="checkbox" id="soundToggle">
+                <span class="slider"></span>
+            </label>
+
+            <div class="user-menu">
+
+                <i class="fas fa-user user-icon" id="userIcon"></i>
+
+                <div class="user-dropdown" id="userDropdown">
+
+                    <div id="loginArea">
+                        <input type="text" id="usernameInput" placeholder="Enter your name">
+                        <button id="submitName">Login</button>
+                    </div>
+
+                    <div id="welcomeArea" style="display:none">
+
+                        <p id="welcomeText"></p>
+
+                        <button id="removeUser">Logout</button>
+
+                        <div class="menu-section">
+                            <h4><i class="fas fa-trophy"></i> Achievements</h4>
+                            <div class="menu-list" id="achievementList">
+                                No achievements yet
+                            </div>
+                        </div>
+
+                        <div class="menu-section">
+                            <h4><i class="fas fa-star"></i> Quiz Best Scores</h4>
+                            <div class="menu-list" id="quizScoreList">
+                                No scores yet
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </header>
+
+    <!-- ================= GAMES SWIPER SECTION ================= -->
+
+    <section class="games-display">
+
+        <div class="games-overlay"></div>
+
+        <div class="games-content">
+
+            <div class="swiper gamesSwiper">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <img src="../img/display1.png" />
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="../img/display2.png" />
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="../img/display3.png" />
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="../img/display4.png" />
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="../img/display5.png" />
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="../img/display6.png" />
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="display-text">
+                <h1>Enter the Unknown</h1>
+                <p>Every choice shapes your journey. Are you ready to face the shadows?</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= GAMES LISTS ================= -->
+    <section class="games-list">
+
+        <div class="games-grid">
+
+            <!-- CARD 1 -->
+            <div class="game-card">
+                <img src="../img/card1.png" alt="Game 1">
+                <div class="game-overlay">
+                    <div class="rating">★★★★★ <span>(4.8)</span></div>
+                    <h3>Halloween Escape</h3>
+                    <p>Solve quiz to collect candies and escape</p>
+                    <button class="play-btn">Play Now</button>
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="game-card">
+                <img src="../img/card3.png" alt="Game 3">
+                <div class="game-overlay">
+                    <div class="rating">★★★★★ <span>(4.9)</span></div>
+                    <h3>The Lost Relic</h3>
+                    <p>Enter a magical jungle of danger and destiny</p>
+                    <button class="play-btn">Play Now</button>
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="game-card coming-soon">
+                <img src="../img/card2.png" alt="Game 2">
+                <div class="glass-overlay">
+                    <span>COMING SOON</span>
+                </div>
+                <div class="game-overlay">
+                    <div class="rating">★★★★☆ <span>(4.5)</span></div>
+                    <h3>The Whispering House</h3>
+                    <p>Solve puzzles inside haunted mansion</p>
+                    <button class="play-btn">Play Now</button>
+                </div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="game-card coming-soon">
+                <img src="../img/display4.png" alt="Game 4">
+                <div class="glass-overlay">
+                    <span>COMING SOON</span>
+                </div>
+                <div class="game-overlay">
+                    <div class="rating">★★★★☆ <span>(4.6)</span></div>
+                    <h3>Draconis Fall</h3>
+                    <p>where hope dies and legends are forged</p>
+                    <button class="play-btn">Play Now</button>
+                </div>
+            </div>
+
+            <!-- CARD 5 -->
+            <div class="game-card coming-soon">
+                <img src="../img/card5.png" alt="Game 5">
+                <div class="glass-overlay">
+                    <span>COMING SOON</span>
+                </div>
+                <div class="game-overlay">
+                    <div class="rating">★★★★☆ <span>(4.4)</span></div>
+                    <h3>Requim of the Entomed</h3>
+                    <p>Escape before the shadows consume you.</p>
+                    <button class="play-btn">Play Now</button>
+                </div>
+            </div>
+
+            <!-- CARD 6 -->
+            <div class="game-card coming-soon">
+                <img src="../img/card6.png" alt="Game 6">
+                <div class="glass-overlay">
+                    <span>COMING SOON</span>
+                </div>
+                <div class="game-overlay">
+                    <div class="rating">★★★★★ <span>(5.0)</span></div>
+                    <h3>The Final Door</h3>
+                    <p>Only the brave can unlock the truth.</p>
+                    <button class="play-btn">Play Now</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="footer-bottom">
+        <p>© 2026 ALL RIGHTS RESERVED BY <span>STORY MAZE</span></p>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <div id="gameModal" class="modal">
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Game Image">
+            <div class="modal-buttons">
+                <button id="enterGameBtn"><i class="fas fa-play"></i>Start the Game</button>
+                <button id="exitGameBtn">Exit</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const music = document.getElementById("bgMusic");
+        const toggle = document.getElementById("soundToggle");
+
+        // Load saved state when page opens
+        window.addEventListener("DOMContentLoaded", () => {
+            const savedState = localStorage.getItem("musicState");
+
+            if (savedState === "on") {
+                toggle.checked = true;
+                music.volume = 0.3;
+                music.play().catch(() => { });
+            }
+        });
+
+        // When user changes toggle
+        toggle.addEventListener("change", () => {
+            if (toggle.checked) {
+                music.volume = 0.3;
+                music.play().catch(() => { });
+                localStorage.setItem("musicState", "on");
+            } else {
+                music.pause();
+                localStorage.setItem("musicState", "off");
+            }
+        });
+    </script>
+
+    <script src="../js/userload.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</body>

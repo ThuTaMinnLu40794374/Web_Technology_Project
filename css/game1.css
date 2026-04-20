@@ -1,0 +1,157 @@
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:#0e0f14;
+color:white;
+}
+
+/* MAIN LAYOUT */
+
+.game-container{
+display:grid;
+grid-template-columns:70% 30%;
+height:100vh;
+}
+
+/* IMAGE SIDE */
+
+.scene{
+height:100%;
+}
+
+.scene img{
+width:100%;
+height:100%;
+object-fit:fill;
+}
+
+/* STORY PANEL */
+
+.story-panel{
+background:linear-gradient(145deg,#151821,#1a1f2c);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:60px;
+box-shadow:-10px 0 40px rgba(0,0,0,0.6);
+border-radius:0 20px 20px 0;
+text-align:center;
+}
+
+/* TITLE */
+
+.story-panel h2{
+font-size:26px;
+margin-bottom:25px;
+color:white;
+text-shadow:0 0 12px rgba(255,255,255,0.2);
+}
+
+/* TEXT */
+
+.story-panel p{
+font-size:16px;
+line-height:1.7;
+color:#cfcfcf;
+margin-bottom:40px;
+}
+
+/* BUTTON AREA */
+
+.choices{
+display:flex;
+flex-direction:column;
+gap:14px;
+width:100%;
+align-items:center;
+}
+
+/* BUTTON STYLE */
+
+.choice-btn{
+padding:16px 20px;
+border:none;
+border-radius:10px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+background:linear-gradient(45deg,#8a110d,#e10600);
+color:white;
+transition:0.25s;
+width:80%;
+max-width:250px;
+}
+
+.choice-btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 18px rgba(255,0,0,0.5);
+}
+
+/* WRONG ANSWER SHAKE */
+
+@keyframes shake{
+0%{transform:translateX(0);}
+25%{transform:translateX(-5px);}
+50%{transform:translateX(5px);}
+75%{transform:translateX(-5px);}
+100%{transform:translateX(0);}
+}
+
+.shake{
+animation:shake 0.3s;
+}
+
+.timer-box {
+    font-size: 22px;
+    color: #ff3b3b;
+    font-weight: bold;
+
+    /* Glow effect */
+    text-shadow:
+        0 0 5px #ff0000,
+        0 0 10px #ff0000,
+        0 0 20px #ff3b3b,
+        0 0 40px rgba(255, 0, 0, 0.8);
+
+    /* Smooth animation */
+    animation: glowPulse 1.2s infinite ease-in-out;
+
+    margin-top: 10px;
+}
+
+
+@keyframes glowPulse {
+    0% {
+        transform: scale(1);
+        text-shadow:
+            0 0 5px #ff0000,
+            0 0 10px #ff0000,
+            0 0 20px #ff3b3b;
+    }
+
+    50% {
+        transform: scale(1.1);
+        text-shadow:
+            0 0 10px #ff0000,
+            0 0 20px #ff3b3b,
+            0 0 40px #ff0000,
+            0 0 60px rgba(255,0,0,0.9);
+    }
+
+    100% {
+        transform: scale(1);
+        text-shadow:
+            0 0 5px #ff0000,
+            0 0 10px #ff0000,
+            0 0 20px #ff3b3b;
+    }
+}

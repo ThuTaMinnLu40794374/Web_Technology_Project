@@ -1,0 +1,978 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #111;
+    color: #f3f4f6;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 25px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+
+.logo {
+    font-size: 26px;
+    font-weight: 800;
+    color: #b11226;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #d1d5db;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: #b11226;
+    transition: 0.3s ease;
+    transform: translateX(-50%);
+}
+
+/* ===== RED MUSIC TOGGLE ===== */
+
+.sound-switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.sound-text {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.sound-switch input {
+    display: none;
+}
+
+.slider {
+    position: relative;
+    width: 55px;
+    height: 22px;
+    background: #2b2b2b;
+    border-radius: 50px;
+    transition: 0.3s ease;
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 3px;
+    top: 3px;
+    background: #ffffff;
+    border-radius: 50%;
+    transition: 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+/* OFF text */
+.slider::after {
+    content: "OFF";
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 9px;
+    font-weight: bold;
+    color: #aaa;
+    transition: 0.3s ease;
+}
+
+/* ON state */
+.sound-switch input:checked + .slider {
+    background: linear-gradient(45deg, #8a110d, #e10600);
+    box-shadow: 0 0 10px rgba(225, 6, 0, 0.6);
+}
+
+/* Move knob */
+.sound-switch input:checked + .slider::before {
+    transform: translateX(30px);
+}
+
+/* ON text */
+.sound-switch input:checked + .slider::after {
+    content: "ON";
+    left: 6px;
+    right: auto;
+    color: #fff;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ================= HOME FIRST SECTION ================= */
+
+.first-bg {
+    position: relative;
+    height: 100vh;
+    background: url("../img/homebg1.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.85) 40%,
+            rgba(30, 30, 30, 0.6) 100%);
+    top: 0;
+    left: 0;
+}
+
+.first-content {
+    position: relative;
+    max-width: 600px;
+    z-index: 2;
+}
+
+.first-content h1 {
+    font-size: 60px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.first-content p {
+    font-size: 18px;
+    color: #d1d5db;
+    margin-bottom: 35px;
+}
+
+/* ================= BUTTONS ================= */
+
+.buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-primary {
+    background: #b11226;
+    padding: 14px 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #e11d48;
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    border: 2px solid #b11226;
+    padding: 14px 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #b11226;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #b11226;
+    color: white;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .first-content h1 {
+        font-size: 38px;
+    }
+
+    .first-content p {
+        font-size: 16px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+}
+
+/* ================= GAMES SECTION ================= */
+
+.games-section {
+    position: relative;
+    background: #060606; 
+    padding: 30px 8%;
+    margin-top: 0;
+    text-align: center;
+    padding-bottom: 60px;
+    overflow: hidden;
+}
+
+.games-section::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(138, 17, 13, 0.35) 0%, transparent 40%);
+    top: -150px;
+    left: -150px;
+    z-index: 0;
+    filter: blur(80px);
+}
+
+.games-section::after {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(138, 17, 13, 0.35)  0%, transparent 40%);
+    bottom: -150px;
+    right: -150px;
+    z-index: 0;
+    filter: blur(80px);
+}
+
+/*================= SECTION TEXT ================= */
+
+.section-title {
+    font-size: 44px;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.section-subtitle {
+    font-size: 17px;
+    color: #aaaaaa;
+    margin-bottom: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+
+/*================= GRID =================*/
+.games-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 35px;
+}
+
+
+
+/*================= GAME CARD =================*/
+
+.game-card {
+    z-index: 2;
+    position: relative;
+    height: 400px;
+    border-radius: 18px;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    transition: 0.5s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+
+.game-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.6s ease;
+}
+
+
+.game-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.95) 25%,
+            rgba(0, 0, 0, 0.4) 60%,
+            transparent 100%);
+}
+
+/* ============== CARD CONTENT ============== */
+.card-content {
+    position: absolute;
+    bottom: 30px;
+    left: 25px;
+    right: 25px;
+    z-index: 2;
+    color: white;
+    text-align: left;
+}
+
+.card-content h3 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #e10600;
+}
+
+.card-content p {
+    font-size: 14px;
+    color: #ddd;
+}
+
+/*============== GLASS OVERLAY ==============*/
+
+.glass-overlay {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease;
+}
+
+.game-card:hover .glass-overlay {
+    top: 0;
+}
+
+
+/*============== BUTTON ==============*/
+
+.explore-btn {
+    padding: 10px 28px;
+    background: #b11226;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+.explore-btn:hover {
+    background: #e11d48;
+}
+
+
+/*==============  HOVER EFFECTS ==============*/
+
+
+.game-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(105, 65, 65, 0.4);
+}
+
+.game-card:hover img {
+    transform: scale(1.08);
+}
+
+
+.game-card:hover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    box-shadow: 0 0 25px rgba(225, 6, 0, 0.6);
+    z-index: 1;
+}
+
+
+/* ================= Intro SECTION ================= */
+
+.quizz-intro-section {
+    position: relative;
+    height: 320px;
+    background: url("../img/homebg3.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 50px;
+}
+
+
+.quizz-intro-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.75),
+            rgba(0, 0, 0, 0.6));
+}
+
+
+.quizz-intro-content {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    margin-right: 450px;
+}
+
+.quizz-intro-content h2 {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.quizz-intro-content p {
+    font-size: 16px;
+    margin-bottom: 25px;
+    color: #d1d5db;
+    line-height: 1.6;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.quizz-intro-btn {
+    display: inline-block;
+    background: #b11226;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+.quizz-intro-btn:hover {
+    background: #e10600;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(225, 6, 0, 0.4);
+}
+
+/*============== Responsive ==============*/
+@media (max-width: 768px) {
+    .quizz-intro-section {
+        height: auto;
+        padding: 50px 20px;
+    }
+
+    .quizz-intro-content {
+        margin: 0;
+    }
+
+    .quizz-intro-content h2 {
+        font-size: 22px;
+    }
+
+    .quizz-intro-content p {
+        font-size: 14px;
+    }
+
+    .quizz-intro-btn {
+        padding: 8px 18px;
+        font-size: 12px;
+    }
+}
+
+/* ================= MINI QUIZ SECTION ================= */
+
+.mini-quiz-section {
+    background: #060606; 
+    padding: 50px 8%;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.mini-quiz-section::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(138, 17, 13, 0.35) 0%, transparent 50%);
+    top: -150px;
+    right: -150px;
+    z-index: 0;
+    filter: blur(80px);
+}
+
+.mini-quiz-section::after {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(138, 17, 13, 0.35)  0%, transparent 50%);
+    bottom: -150px;
+    left: -150px;
+    z-index: 0;
+    filter: blur(80px);
+}
+
+.mini-section-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 800;
+    color: #ffffff;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    line-height: 1.2;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    
+}
+
+.mini-section-subtitle {
+    text-align: center;
+    font-size: 17px;
+    color: #aaaaaa;
+    margin-bottom: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+/* 3 cards side by side */
+.mini-quiz-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.mini-quiz-card {
+    z-index: 2;
+    display: flex;
+    background: #0f0e0e;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+
+.card-image {
+    width: 45%;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*============== card area ==============*/
+.card-info {
+    width: 55%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-info h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: #8d2828;
+}
+
+.card-info p {
+    font-size: 15px;
+    color: #bdbdbd;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+
+.mini-play-btn {
+    display: inline-block;
+    background: #b11226;
+    color: white;
+    padding: 12px 26px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: 0.3s ease;
+    width: fit-content;
+}
+
+.mini-play-btn:hover {
+    background: linear-gradient(45deg, #9d1414, #da0606);
+    box-shadow: 0 0 20px rgba(225, 6, 0, 0.8);
+    transform: scale(1.05);
+}
+
+.mini-quiz-card:hover {
+    cursor: pointer;
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(105, 65, 65, 0.4);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1024px) {
+    .mini-quiz-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mini-quiz-card {
+        flex-direction: column;
+    }
+
+    .card-image,
+    .card-info {
+        width: 100%;
+    }
+
+    .card-image img {
+        height: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mini-section-title {
+        font-size: 28px;
+    }
+
+    .mini-section-subtitle {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+}
+
+
+/* ================= QUIZ MODAL ================= */
+
+.quiz-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+
+.quiz-box {
+    background: #1a1a1a;
+    width: 800px;
+    max-width: 95%;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.quiz-content {
+    display: flex;
+    min-height: 400px;
+}
+
+.quiz-image {
+    width: 45%;
+}
+
+.quiz-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* RIGHT SIDE QUESTIONS & RESULTS */
+.quiz-right {
+    width: 55%;
+    padding: 30px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    color: #ffffff;
+    background: rgba(0,0,0,0.35); 
+    border-left: 2px solid #454242; 
+    box-sizing: border-box;
+    gap: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+.quiz-right #quizTitle {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #b11226;
+    text-align: center;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+
+.quiz-right #questionText {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* ANSWERS CONTAINER */
+.quiz-right .answers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.quiz-right .answers button {
+    background: #2a2a2a;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13px;
+    cursor: pointer;
+    border: 1px solid #444;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.quiz-right .answers button:hover {
+    background: #b11226;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.quiz-right .result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; 
+    font-family: 'Poppins', sans-serif; 
+}
+
+/* SCORE TITLE */
+.quiz-right .result-container h3 {
+    font-size: 20px; 
+    color: #ffffff; 
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(250, 1, 1, 0.932);
+    text-align: center;
+    padding-bottom: 6px;
+    border-bottom: 2px solid  #450b16;
+    margin: 0;
+    font-family: 'Orbitron', sans-serif; 
+}
+
+/* RESULT MESSAGE */
+.quiz-right .result-container p {
+    font-size: 14px;       
+    line-height: 1.6;      
+    text-align: center;
+    color: #ffffff;
+    padding: 15px 10px;    
+    border-bottom: 2px solid #450b16;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* RESULT BUTTONS */
+.quiz-right .result-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 50px; 
+    margin-top: 10px;
+}
+
+/* RETRY BUTTON */
+.quiz-right .result-buttons .retry-btn {
+    background: #242424; 
+    color: #ffffff;      
+    border: none;
+    padding: 10px 30px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(18, 18, 18, 0.4);
+    font-family: 'Poppins', sans-serif;
+}
+
+.quiz-right .result-buttons .retry-btn:hover {
+    background: #333333;  
+    transform: scale(1.05);
+    box-shadow: 0 5px 12px rgba(63, 60, 60, 0.5);
+}
+
+
+.quiz-right .result-buttons .exit-btn {
+    background: #b11226;  
+    color: #ffffff;
+    border: none;
+     padding: 10px 30px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+    font-family: 'Poppins', sans-serif;
+}
+
+.quiz-right .result-buttons .exit-btn:hover {
+    background: #e10600;
+    transform: scale(1.05);
+    box-shadow: 0 5px 12px rgba(63, 60, 60, 0.5);
+}
+
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+}
+
+
+.answers button {
+    width: 100%;
+    margin: 10px 0;
+}
+
+/*============== RESPONSIVE ==============*/
+@media (max-width: 768px) {
+    .quiz-content {
+        flex-direction: column;
+    }
+
+    .quiz-image,
+    .quiz-right {
+        width: 100%;
+    }
+
+    .quiz-image {
+        height: 200px;
+    }
+
+    .quiz-right {
+        padding: 20px;
+        border-left: none;
+    }
+
+    .quiz-right #quizTitle {
+        font-size: 24px;
+    }
+
+    .quiz-right #questionText {
+        font-size: 18px;
+    }
+
+    .quiz-right .answers button {
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    .quiz-right .result-container h3 {
+        font-size: 22px;
+    }
+
+    .quiz-right .result-container p {
+        font-size: 16px;
+    }
+
+    .quiz-right .result-buttons button {
+        font-size: 15px;
+        padding: 10px 18px;
+    }
+}
+
+
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #333;
+    border-top: 6px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* ================= FOOTER BOTTOM ================= */
+.footer-bottom {
+    background-color: #0c0c0c;
+    padding: 15px 0;
+    text-align: center;
+    border-top: 1px solid rgba(34, 33, 33, 0.1);
+    border-bottom: 1px solid rgba(34, 33, 33, 0.1);
+}
+
+.footer-bottom p {
+    font-size: 13px;
+    color: #aaa;
+    letter-spacing: 1px;
+}
+
+.footer-bottom p span {
+    color: #e10600;
+    font-weight: 600;
+}

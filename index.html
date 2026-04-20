@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Story Maze</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/homepage.css">
+    <link rel="stylesheet" href="./CSS/user.css">
+    <script src="../js/homepage_quizz.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="../sounds/navbar-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <header class="navbar">
+        <div class="logo">StoryMaze</div>
+
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#mini-quiz">Quizzes</a></li>
+            <li><a href="./html/gamepage.html">Games</a></li>
+            <li><a href="./html/aboutuspage.html">About Us</a></li>
+            <li><a href="./html/contactpage.html">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+            <label class="sound-switch">
+                <span class="sound-text">Music</span>
+                <input type="checkbox" id="soundToggle">
+                <span class="slider"></span>
+            </label>
+
+            <div class="user-menu">
+
+                <i class="fas fa-user user-icon" id="userIcon"></i>
+
+                <div class="user-dropdown" id="userDropdown">
+
+                    <div id="loginArea">
+                        <input type="text" id="usernameInput" placeholder="Enter your name">
+                        <button id="submitName">Login</button>
+                    </div>
+
+                    <div id="welcomeArea" style="display:none">
+
+                        <p id="welcomeText"></p>
+
+                        <button id="removeUser">Logout</button>
+
+                        <div class="menu-section">
+                            <h4><i class="fas fa-trophy"></i> Achievements</h4>
+                            <div class="menu-list" id="achievementList">
+                                No achievements yet
+                            </div>
+                        </div>
+
+                        <div class="menu-section">
+                            <h4><i class="fas fa-star"></i> Quiz Best Scores</h4>
+                            <div class="menu-list" id="quizScoreList">
+                                No scores yet
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <section class="first-bg">
+        <div class="overlay"></div>
+
+        <div class="first-content">
+            <h1>
+                Enter The World <br>
+                Of Interactive Stories
+            </h1>
+
+            <p>
+                Make powerful choices, unlock different endings,
+                and experience stories like never before.
+                Every decision shapes your journey.
+            </p>
+
+            <div class="buttons">
+                <a href="#game-sec" class="btn-primary">Start Adventure</a>
+                <a href="gamepage.html" class="btn-secondary">Explore Stories</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= GAMES SECTION ================= -->
+    <section class="games-section" id="game-sec">
+
+        <h2 class="section-title">
+            Secrets Are Waiting
+        </h2>
+
+        <p class="section-subtitle">
+            Solve the riddles. Choose your destiny. Every choice writes a story.<br>
+            Are you brave enough to find the answers?
+        </p>
+
+        <div class="games-container">
+
+            <a href="gamepage.html" class="game-card">
+                <img src="./img/card1.png" alt="Halloween Escape">
+
+                <div class="card-content">
+                    <h3>Halloween Escape</h3>
+                    <p>Solve the quiz to collect candies and escape</p>
+                </div>
+
+                <div class="glass-overlay">
+                    <span class="explore-btn">Explore Now</span>
+                </div>
+            </a>
+
+            <a href="gamepage.html" class="game-card">
+                <img src="./img/card2.png" alt="The Whispering House">
+
+                <div class="card-content">
+                    <h3>The Whispering House</h3>
+                    <p>Solve puzzles inside a haunted mansion</p>
+                </div>
+
+                <div class="glass-overlay">
+                    <span class="explore-btn">Explore Now</span>
+                </div>
+            </a>
+
+            <a href="gamepage.html" class="game-card">
+                <img src="./img/card3.png" alt="The Lost Relic">
+
+                <div class="card-content">
+                    <h3>The Lost Relic</h3>
+                    <p>Enter a magical jungle of danger and destiny</p>
+                </div>
+
+                <div class="glass-overlay">
+                    <span class="explore-btn">Explore Now</span>
+                </div>
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- ================= Quizz SECTION ================= -->
+
+    <section class="quizz-intro-section">
+
+        <div class="quizz-intro-overlay"></div>
+
+        <div class="quizz-intro-content">
+            <h2>Mini-Quizzes Await</h2>
+            <p>
+                Explore interactive mini-quizzes designed to test your skills. <br>
+                Every second counts. Every answer matters.
+            </p>
+            <a href="#mini-quiz" class="quizz-intro-btn">Play Mini-Quizzes</a>
+        </div>
+
+    </section>
+
+    <!-- ================= MINI QUIZ CARDS SECTION ================= -->
+
+    <section id="mini-quiz" class="mini-quiz-section">
+
+        <h2 class="mini-section-title">Test Your Mind & Fate</h2>
+
+        <p class="mini-section-subtitle">
+            Race against time, tackle tricky challenges <br>
+            Every answer shapes your score and reveals what kind of strategist you truly are!
+        </p>
+
+        <div id="mini-quizzes" class="mini-quiz-grid">
+
+            <!-- Card 1 -->
+            <div class="mini-quiz-card">
+
+                <div class="card-image">
+                    <img src="./img/quiz1.png" alt="Brain Blitz">
+                </div>
+
+                <div class="card-info">
+                    <h3>Island of Decay</h3>
+                    <p>
+                        Scavenge, build, and survive the relentless undead tides.
+                    </p>
+                    <a href="javascript:void(0)" class="mini-play-btn" onclick="openQuiz('island')">
+                        Play Now
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Card 2 -->
+            <div class="mini-quiz-card">
+
+                <div class="card-image">
+                    <img src="./img/quiz2.png" alt="Mystery Challenge">
+                </div>
+
+                <div class="card-info">
+                    <h3>Cursed Wanderer</h3>
+                    <p>
+                        Master brutal combat and manage vitals in a dying world.
+                    </p>
+                    <a href="javascript:void(0)" class="mini-play-btn" onclick="openQuiz('cursed')">
+                        Play Now
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Card 3 -->
+            <div class="mini-quiz-card">
+
+                <div class="card-image">
+                    <img src="./img/quiz3.png" alt="Logic Arena">
+                </div>
+
+                <div class="card-info">
+                    <h3>Grave Hunt</h3>
+                    <p>
+                        Navigate the mist and outrun the shadows of the fallen in forbidden graveyard.
+                    </p>
+
+                    <a href="javascript:void(0)" class="mini-play-btn" onclick="openQuiz('grave')">
+                        Play Now
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- LOADING OVERLAY -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- ================= QUIZ MODAL ================= -->
+
+    <div id="quizModal" class="quiz-modal">
+
+        <div class="quiz-box">
+
+            <span class="close-btn" onclick="closeQuiz()">✖</span>
+
+            <div class="quiz-content">
+
+                <!-- LEFT IMAGE -->
+                <div class="quiz-image">
+                    <img src="" alt="Quiz Image" id="quizImg">
+                </div>
+
+                <!-- RIGHT SIDE QUESTIONS & ANSWERS -->
+                <div class="quiz-right">
+
+                    <h2 id="quizTitle">⚔</h2>
+
+                    <div id="questionContainer">
+                        <p id="questionText"></p>
+                        <div id="answersContainer" class="answers"></div>
+                    </div>
+
+                    <div id="resultContainer" class="result-container" style="display: none;">
+                        <h3 id="finalScore"></h3>
+                        <p id="finalFate"></p>
+
+                        <div class="result-buttons">
+                            <button class="retry-btn" onclick="restartQuiz()">Retry</button>
+                            <button class="exit-btn" onclick="closeQuiz()">Exit</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 ALL RIGHTS RESERVED BY <span>STORY MAZE</span></p>
+    </div>
+
+
+    <script>
+        const music = document.getElementById("bgMusic");
+        const toggle = document.getElementById("soundToggle");
+
+        // Load saved state when page opens
+        window.addEventListener("DOMContentLoaded", () => {
+            const savedState = localStorage.getItem("musicState");
+
+            if (savedState === "on") {
+                toggle.checked = true;
+                music.volume = 0.3;
+                music.play().catch(() => { });
+            }
+        });
+
+        // When user changes toggle
+        toggle.addEventListener("change", () => {
+            if (toggle.checked) {
+                music.volume = 0.3;
+                music.play().catch(() => { });
+                localStorage.setItem("musicState", "on");
+            } else {
+                music.pause();
+                localStorage.setItem("musicState", "off");
+            }
+        });
+    </script>
+
+    <script src="../js/userload.js"></script>
+
+</body>
+
+</html>

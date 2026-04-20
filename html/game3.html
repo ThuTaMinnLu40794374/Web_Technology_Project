@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>The Lost Relic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../CSS/game3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="game-container">
+
+        <!-- LEFT IMAGE -->
+        <div class="scene">
+            <img id="sceneImage" src="../img/scene1.png">
+        </div>
+
+        <!-- RIGHT STORY PANEL -->
+        <div class="story-panel">
+
+            <div class="hearts" id="hearts">
+                <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-heart"></i>
+            </div>
+
+            <h2 id="sceneTitle">The Jungle Entrance</h2>
+
+            <p id="sceneText">
+                You stand at the edge of a mysterious jungle.
+                Legends say a lost relic lies hidden deep inside.
+            </p>
+
+            <div class="choices" id="choices"></div>
+
+        </div>
+
+    </div>
+
+    <div id="quizModal" class="quiz-modal">
+
+        <div class="quiz-box">
+
+            <h2 id="quizTimer">Time: 30s</h2>
+
+            <h3 id="quizQuestion"></h3>
+
+            <div id="quizAnswers"></div>
+
+        </div>
+
+    </div>
+
+    <div id="gameOverModal" class="modal">
+        <div class="modal-content">
+            <h2>You Lost the Game!</h2>
+            <p>All your lives are gone. Try again or exit.</p>
+            <div class="modal-buttons">
+                <button id="retryGameBtn" class="choice-btn">Retry Game</button>
+                <button id="exitGameBtn" class="choice-btn">Exit Game</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/game3.js"></script>
+
+</body>
+
+</html>

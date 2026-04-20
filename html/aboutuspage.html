@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Story Maze</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/aboutuspage.css">
+    <link rel="stylesheet" href="../CSS/user.css">
+</head>
+
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="../sounds/navbar-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <header class="navbar">
+        <div class="logo">StoryMaze</div>
+
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html">Quizzes</a></li>
+            <li><a href="gamepage.html">Games</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="contactpage.html">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+            <label class="sound-switch">
+                <span class="sound-text">Music</span>
+                <input type="checkbox" id="soundToggle">
+                <span class="slider"></span>
+            </label>
+
+            <div class="user-menu">
+
+                <i class="fas fa-user user-icon" id="userIcon"></i>
+
+                <div class="user-dropdown" id="userDropdown">
+
+                    <div id="loginArea">
+                        <input type="text" id="usernameInput" placeholder="Enter your name">
+                        <button id="submitName">Login</button>
+                    </div>
+
+                    <div id="welcomeArea" style="display:none">
+
+                        <p id="welcomeText"></p>
+
+                        <button id="removeUser">Logout</button>
+
+                        <div class="menu-section">
+                            <h4><i class="fas fa-trophy"></i> Achievements</h4>
+                            <div class="menu-list" id="achievementList">
+                                No achievements yet
+                            </div>
+                        </div>
+
+                        <div class="menu-section">
+                            <h4><i class="fas fa-star"></i> Quiz Best Scores</h4>
+                            <div class="menu-list" id="quizScoreList">
+                                No scores yet
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= ABOUT US SECTION ================= -->
+    <section class="about-section">
+
+        <div class="about-container">
+
+            <!-- LEFT SIDE -->
+            <div class="about-text">
+
+                <h1>ABOUT STORYMAZE</h1>
+                <div class="about-underline"></div>
+
+                <p class="about-intro">
+                    StoryMaze is more than a platform — it’s a world of choices,
+                    consequences, and unforgettable adventures.
+                </p>
+
+                <p>
+                    We design immersive interactive stories, cinematic mini-quizzes,
+                    and thrilling challenges that push your logic, strategy,
+                    and courage to the limit.
+                </p>
+
+                <p>
+                    Every decision you make unlocks a new path.
+                    Every path reveals a different ending.
+                    Your story is never the same twice.
+                </p>
+
+                <div class="about-buttons">
+                    <a href="gamepage.html" class="about-primary">Explore Games</a>
+                    <a href="contactpage.html" class="about-secondary">Message Us</a>
+                </div>
+
+            </div>
+
+            <!-- FLOATING IMAGE -->
+            <div class="about-image">
+                <img src="../img/knight.png" alt="StoryMaze Illustration">
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="footer-bottom">
+        <p>© 2026 ALL RIGHTS RESERVED BY <span>STORY MAZE</span></p>
+    </div>
+
+    <script>
+        const music = document.getElementById("bgMusic");
+        const toggle = document.getElementById("soundToggle");
+
+        // Load saved state when page opens
+        window.addEventListener("DOMContentLoaded", () => {
+            const savedState = localStorage.getItem("musicState");
+
+            if (savedState === "on") {
+                toggle.checked = true;
+                music.volume = 0.3;
+                music.play().catch(() => { });
+            }
+        });
+
+        // When user changes toggle
+        toggle.addEventListener("change", () => {
+            if (toggle.checked) {
+                music.volume = 0.3;
+                music.play().catch(() => { });
+                localStorage.setItem("musicState", "on");
+            } else {
+                music.pause();
+                localStorage.setItem("musicState", "off");
+            }
+        });
+    </script>
+
+    <script src="../js/userload.js"></script>
+</body>
+
+</html>
