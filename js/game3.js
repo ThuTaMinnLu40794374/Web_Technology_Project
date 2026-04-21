@@ -9,6 +9,14 @@ const quizQuestion = document.getElementById("quizQuestion");
 const quizAnswers = document.getElementById("quizAnswers");
 const quizTimer = document.getElementById("quizTimer");
 
+const jungleScenes = [
+    "scene1", "scene2", "scene4", "scene5", "scene6",
+    "scene8", "scene10", "scene12", "scene13",
+    "scene18", "scene21", "scene22"
+];
+
+const riverScenes = ["scene7", "scene9", "scene15"];
+
 let hearts = 2;
 
 /* UPDATE HEARTS */
@@ -283,8 +291,121 @@ const story = {
 
 };
 
+/* ---------------- SOUND SYSTEM ---------------- */
+
+let soundUnlocked = false;
+
+const sounds = {
+    jungle: new Audio("../sounds/jungle.mp3"),
+    caveRiver: new Audio("../sounds/caveriver.mp3"),
+    riverMonster: new Audio("../sounds/rivermonster.mp3"),
+    shadowFigure: new Audio("../sounds/shadowfigure.mp3"),
+    waterfall: new Audio("../sounds/waterfall.mp3"),
+    died: new Audio("../sounds/died.mp3"),
+    monster: new Audio("../sounds/monster.mp3"),
+
+    footstep: new Audio("../sounds/footstep.mp3"),
+    boatSplash: new Audio("../sounds/boatsplash.mp3"),
+
+    click: new Audio("../sounds/click.mp3"),
+
+    survived: new Audio("../sounds/survived.mp3")
+};
+
+/* LOOP SETTINGS */
+sounds.jungle.loop = true;
+sounds.caveRiver.loop = true;
+
+/* VOLUME */
+Object.values(sounds).forEach(s => s.volume = 0.6);
+
+/* UNLOCK AUDIO */
+function unlockAudio() {
+    if (soundUnlocked) return;
+    soundUnlocked = true;
+
+    sounds.jungle.play().catch(() => { });
+}
+
+document.addEventListener("pointerdown", unlockAudio, { once: true });
+document.addEventListener("keydown", unlockAudio, { once: true });
+
+/* STOP ALL */
+function stopAll() {
+    Object.values(sounds).forEach(s => {
+        s.pause();
+        s.currentTime = 0;
+    });
+}
+
+/* SAFE PLAY */
+function playSound(sound) {
+    if (!sound) return;
+    sound.cloneNode().play().catch(() => { });
+}
+
+
+function updateSceneSound(sceneName) {
+
+    // stop everything except jungle (handled separately)
+    Object.values(sounds).forEach(s => {
+        if (s !== sounds.jungle) {
+            s.pause();
+            s.currentTime = 0;
+        }
+    });
+
+    // JUNGLE
+    // JUNGLE
+    if (jungleScenes.includes(sceneName) || riverScenes.includes(sceneName)) {
+
+        sounds.caveRiver.pause();
+
+        if (sounds.jungle.paused) {
+            sounds.jungle.currentTime = 0;
+            sounds.jungle.play().catch(() => { });
+        }
+    }
+    else {
+        sounds.jungle.pause();
+    }
+
+    // CAVE + RIVER AMBIENCE
+    if (sceneName === "scene3") {
+        sounds.caveRiver.loop = true;
+        sounds.caveRiver.play().catch(() => { });
+    }
+
+    // RIVER MONSTER
+    if (sceneName === "scene11") {
+        sounds.riverMonster.play().catch(() => { });
+    }
+
+    // SHADOW FIGURE
+    if (sceneName === "scene14") {
+        sounds.shadowFigure.play().catch(() => { });
+    }
+
+    // WATERFALL
+    if (sceneName === "scene15") {
+        sounds.waterfall.play().catch(() => { });
+    }
+
+    // DEATH
+    if (["scene16", "scene17"].includes(sceneName)) {
+        sounds.died.play().catch(() => { });
+    }
+
+    // FINAL MONSTER
+    if (sceneName === "scene20") {
+        sounds.monster.play().catch(() => { });
+    }
+
+
+}
+
 /* ---------------- ADD ACHIEVEMENT FUNCTION ---------------- */
-window.addAchievement = function(name) {
+window.addAchievement = function (name) {
 
     if (!localStorage.getItem("storymazeUser")) {
         alert("Please login to save achievements!");
@@ -327,6 +448,8 @@ function loadScene(sceneName) {
     sceneTitle.innerText = scene.title;
     sceneText.innerText = scene.text;
 
+    updateSceneSound(sceneName);
+
     // Call onEnter if it exists
     if (scene.onEnter) {
         scene.onEnter();
@@ -339,9 +462,22 @@ function loadScene(sceneName) {
         btn.classList.add("choice-btn");
         btn.innerText = choice.text;
 
-        if (choice.next) {
-            btn.onclick = () => loadScene(choice.next);
-        }
+        btn.onclick = () => {
+
+            const nextScene = choice.next;
+
+            // FOOTSTEP (JUNGLE ONLY)
+            if (jungleScenes.includes(nextScene)) {
+                playSound(sounds.footstep);
+            }
+
+            // BOAT SPLASH (RIVER ONLY)
+            if (riverScenes.includes(nextScene) || nextScene === "scene11") {
+                playSound(sounds.boatSplash);
+            }
+
+            loadScene(nextScene);
+        };
 
         if (choice.action === "download") {
             btn.onclick = downloadAchievement;
@@ -356,6 +492,8 @@ function loadScene(sceneName) {
 
     if (sceneName === "scene23") {
         window.addAchievement("FOUND THE LOST RELIC");
+        stopAll(); 
+        playSound(sounds.survived);
     }
 }
 
@@ -364,6 +502,7 @@ function loadScene(sceneName) {
 function startQuiz() {
 
     quizModal.style.display = "flex";
+
 
     let questions = [
 
@@ -432,6 +571,8 @@ function startQuiz() {
             btn.innerText = answer;
 
             btn.onclick = () => {
+
+                playSound(sounds.click);
 
                 if (index === q.correct) {
 
@@ -540,6 +681,8 @@ function startRiverQuiz() {
             btn.innerText = answer;
 
             btn.onclick = () => {
+
+                playSound(sounds.click);
 
                 if (index === q.correct) {
                     current++;

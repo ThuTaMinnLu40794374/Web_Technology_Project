@@ -193,6 +193,57 @@ const story = {
 };
 
 
+/* SOUND SYSTEM */
+let ambientStarted = false;
+let userInteracted = false;
+
+const sounds = {
+    click: new Audio("../sounds/click.mp3"),
+    win: new Audio("../sounds/win.mp3"),
+    lose: new Audio("../sounds/lose.mp3"),
+    knock: new Audio("../sounds/knock.mp3"),
+    ambient: new Audio("../sounds/ambient.mp3")
+};
+
+// volume setup
+sounds.click.volume = 0.6;
+sounds.win.volume = 1.0;
+sounds.lose.volume = 1.0;
+sounds.knock.volume = 1.0;
+
+sounds.ambient.loop = true;
+sounds.ambient.volume = 0.6;
+
+// safe play
+function playSound(sound) {
+    const s = sound.cloneNode();
+    s.volume = sound.volume || 1;
+    s.play().catch(() => { });
+}
+
+/* 🔓 unlock audio on ANY interaction */
+function unlockAudio() {
+    userInteracted = true;
+
+    if (!ambientStarted) {
+        sounds.ambient.play().catch(() => { });
+        ambientStarted = true;
+    }
+}
+
+document.addEventListener("pointerdown", unlockAudio, { once: true });
+document.addEventListener("keydown", unlockAudio, { once: true });
+
+function shouldPlayAmbient(sceneName) {
+    return [
+        "scene1", "scene2", "scene3", "scene4",
+        "scene8", "scene9",
+        "scene13", "scene14",
+        "scene17", "scene18",
+        "scene21", "scene22"
+    ].includes(sceneName);
+}
+
 /* ---------------- ADD ACHIEVEMENT FUNCTION ---------------- */
 window.addAchievement = function (name) {
 
@@ -214,6 +265,8 @@ window.addAchievement = function (name) {
     }
 };
 
+
+
 /* ---------------- LOAD SCENE ---------------- */
 function loadScene(sceneName) {
 
@@ -232,20 +285,50 @@ function loadScene(sceneName) {
     sceneText.innerText = scene.text;
     choicesDiv.innerHTML = "";
 
+    if (shouldPlayAmbient(sceneName)) {
+
+        // only try if user already interacted
+        if (userInteracted && sounds.ambient.paused) {
+            sounds.ambient.play().catch(() => { });
+        }
+
+    } else {
+        sounds.ambient.pause();
+    }
+
+    /* BUTTONS */
     scene.choices.forEach(choice => {
+
         let btn = document.createElement("button");
         btn.className = "choice-btn";
         btn.innerText = choice.text;
-        btn.onclick = () => loadScene(choice.next);
+
+        btn.onclick = () => {
+            playSound(sounds.click);
+            loadScene(choice.next);
+        };
+
         choicesDiv.appendChild(btn);
     });
 
-    // Automatically add achievement when scene25 loads
+    /* WIN / LOSE / KNOCK */
+    if (sceneName === "scene25") {
+        setTimeout(() => playSound(sounds.win), 200);
+    }
+
+    if (sceneName === "scene0") {
+        setTimeout(() => playSound(sounds.lose), 200);
+    }
+
+    if (["scene5", "scene10", "scene15", "scene19", "scene23"].includes(sceneName)) {
+        playSound(sounds.knock);
+    }
+
+    /* ACHIEVEMENT */
     if (sceneName === "scene25") {
         window.addAchievement("CANDY MASTER");
     }
 }
-
 
 
 /* RANDOMIZE ANSWERS */
@@ -311,6 +394,8 @@ function runQuiz(questions, successScene) {
             btn.innerText = ans;
 
             btn.onclick = () => {
+
+                playSound(sounds.click);
 
                 if (i === q.correct) {
 
