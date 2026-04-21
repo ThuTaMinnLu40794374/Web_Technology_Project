@@ -198,11 +198,11 @@ let ambientStarted = false;
 let userInteracted = false;
 
 const sounds = {
-    click: new Audio("../sounds/click.mp3"),
-    win: new Audio("../sounds/win.mp3"),
-    lose: new Audio("../sounds/lose.mp3"),
-    knock: new Audio("../sounds/knock.mp3"),
-    ambient: new Audio("../sounds/ambient.mp3")
+    click: new Audio("/Web_Technology_Project/sounds/click.mp3"),
+    win: new Audio("/Web_Technology_Project/sounds/win.mp3"),
+    lose: new Audio("/Web_Technology_Project/sounds/lose.mp3"),
+    knock: new Audio("/Web_Technology_Project/sounds/knock.mp3"),
+    ambient: new Audio("/Web_Technology_Project/sounds/ambient.mp3")
 };
 
 // volume setup
@@ -304,6 +304,15 @@ function loadScene(sceneName) {
         btn.innerText = choice.text;
 
         btn.onclick = () => {
+
+            // unlock + play ambient on FIRST click safely
+            if (!userInteracted) {
+                userInteracted = true;
+
+                sounds.ambient.play().catch(() => { });
+                ambientStarted = true;
+            }
+
             playSound(sounds.click);
             loadScene(choice.next);
         };
