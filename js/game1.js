@@ -304,15 +304,6 @@ function loadScene(sceneName) {
         btn.innerText = choice.text;
 
         btn.onclick = () => {
-
-            // unlock + play ambient on FIRST click safely
-            if (!userInteracted) {
-                userInteracted = true;
-
-                sounds.ambient.play().catch(() => { });
-                ambientStarted = true;
-            }
-
             playSound(sounds.click);
             loadScene(choice.next);
         };

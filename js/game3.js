@@ -492,7 +492,7 @@ function loadScene(sceneName) {
 
     if (sceneName === "scene23") {
         window.addAchievement("FOUND THE LOST RELIC");
-        stopAll();
+        stopAll(); 
         playSound(sounds.survived);
     }
 }
