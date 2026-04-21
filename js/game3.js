@@ -296,20 +296,20 @@ const story = {
 let soundUnlocked = false;
 
 const sounds = {
-    jungle: new Audio("../sounds/jungle.mp3"),
-    caveRiver: new Audio("../sounds/caveriver.mp3"),
-    riverMonster: new Audio("../sounds/rivermonster.mp3"),
-    shadowFigure: new Audio("../sounds/shadowfigure.mp3"),
-    waterfall: new Audio("../sounds/waterfall.mp3"),
-    died: new Audio("../sounds/died.mp3"),
-    monster: new Audio("../sounds/monster.mp3"),
+    jungle: new Audio("/Web_Technology_Project/sounds/jungle.mp3"),
+    caveRiver: new Audio("/Web_Technology_Project/sounds/caveriver.mp3"),
+    riverMonster: new Audio("/Web_Technology_Project/sounds/rivermonster.mp3"),
+    shadowFigure: new Audio("/Web_Technology_Project/sounds/shadowfigure.mp3"),
+    waterfall: new Audio("/Web_Technology_Project/sounds/waterfall.mp3"),
+    died: new Audio("/Web_Technology_Project/sounds/died.mp3"),
+    monster: new Audio("/Web_Technology_Project/sounds/monster.mp3"),
 
-    footstep: new Audio("../sounds/footstep.mp3"),
-    boatSplash: new Audio("../sounds/boatsplash.mp3"),
+    footstep: new Audio("/Web_Technology_Project/sounds/footstep.mp3"),
+    boatSplash: new Audio("/Web_Technology_Project/sounds/boatsplash.mp3"),
 
-    click: new Audio("../sounds/click.mp3"),
+    click: new Audio("/Web_Technology_Project/sounds/click.mp3"),
 
-    survived: new Audio("../sounds/survived.mp3")
+    survived: new Audio("/Web_Technology_Project/sounds/survived.mp3")
 };
 
 /* LOOP SETTINGS */
@@ -492,7 +492,7 @@ function loadScene(sceneName) {
 
     if (sceneName === "scene23") {
         window.addAchievement("FOUND THE LOST RELIC");
-        stopAll(); 
+        stopAll();
         playSound(sounds.survived);
     }
 }
