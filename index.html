@@ -19,7 +19,6 @@
 
     <header class="navbar">
         <div class="logo">StoryMaze</div>
-
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
             <li><a href="#mini-quiz">Quizzes</a></li>
@@ -28,6 +27,7 @@
             <li><a href="./html/contactpage.html">Contact</a></li>
         </ul>
         <div class="nav-right">
+
             <label class="sound-switch">
                 <span class="sound-text">Music</span>
                 <input type="checkbox" id="soundToggle">
@@ -69,6 +69,12 @@
 
                 </div>
 
+            </div>
+
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </header>
@@ -322,6 +328,23 @@
                 music.pause();
                 localStorage.setItem("musicState", "off");
             }
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuToggle = document.getElementById("menuToggle");
+            const navLinks = document.querySelector(".nav-links");
+
+            menuToggle.addEventListener("click", () => {
+                navLinks.classList.toggle("active");
+            });
+
+            document.querySelectorAll(".nav-links a").forEach(link => {
+                link.addEventListener("click", () => {
+                    navLinks.classList.remove("active");
+                });
+            });
         });
     </script>
 

@@ -18,15 +18,15 @@
 
     <header class="navbar">
         <div class="logo">StoryMaze</div>
-
         <ul class="nav-links">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../index.html">Quizzes</a></li>
-            <li><a href="gamepage.html">Games</a></li>
-            <li><a href="aboutuspage.html">About Us</a></li>
+            <li><a href="./html/homepage.html">Home</a></li>
+            <li><a href="./html/homepage.html">Quizzes</a></li>
+            <li><a href="./html/gamepage.html">Games</a></li>
+            <li><a href="./html/aboutuspage.html">About Us</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
         <div class="nav-right">
+
             <label class="sound-switch">
                 <span class="sound-text">Music</span>
                 <input type="checkbox" id="soundToggle">
@@ -68,6 +68,12 @@
 
                 </div>
 
+            </div>
+
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </header>
@@ -172,7 +178,7 @@
 
             e.preventDefault();
             emailSubject.value = "StoryMaze Contact - " + subjectInput.value;
-            
+
             btnText.innerText = "Sending...";
             btnText.disabled = true;
 
@@ -204,6 +210,24 @@
         }
 
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuToggle = document.getElementById("menuToggle");
+            const navLinks = document.querySelector(".nav-links");
+
+            menuToggle.addEventListener("click", () => {
+                navLinks.classList.toggle("active");
+            });
+
+            document.querySelectorAll(".nav-links a").forEach(link => {
+                link.addEventListener("click", () => {
+                    navLinks.classList.remove("active");
+                });
+            });
+        });
+    </script>
+
     <script src="../js/userload.js"></script>
 </body>
 
