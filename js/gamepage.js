@@ -4,12 +4,12 @@ document.addEventListener("DOMContentLoaded", function () {
         effect: "coverflow",
         grabCursor: true,
         centeredSlides: true,
-        slidesPerView: 2.7,   // 🔥 IMPORTANT (not auto)
+        slidesPerView: 2.7,  
         loop: true,
 
         coverflowEffect: {
             rotate: 0,
-            stretch: 10,   // space between side cards
+            stretch: 10,  
             depth: 300,
             modifier: 1,
             slideShadows: false,
